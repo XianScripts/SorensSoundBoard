@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Soren's Quick Reference SoundBoard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🍑" />
+</head>
+<body>
+
+
+  <div class="keys">
+    <div event-key="a" class="key">
+      <kbd>A</kbd>
+      <span class="sound">VINE BOOM!</span>
+    </div>
+    <div event-key="s" class="key">
+      <kbd>S</kbd>
+      <span class="sound">Spongebob Fail</span>
+    </div>
+    <div event-key="d" class="key">
+      <kbd>D</kbd>
+      <span class="sound">Emotional Damage</span>
+    </div>
+    <div event-key="f" class="key">
+      <kbd>F</kbd>
+      <span class="sound">Poopy Funny hAHA1!!</span>
+    </div>
+    <div event-key="g" class="key">
+      <kbd>G</kbd>
+      <span class="sound">When Dex tries to flirt</span>
+    </div>
+    <div event-key="h" class="key">
+      <kbd>H</kbd>
+      <span class="sound">When a scrub joins the party</span>
+    </div>
+    <div event-key="j" class="key">
+      <kbd>J</kbd>
+      <span class="sound">Classic</span>
+    </div>
+    <div event-key="k" class="key">
+      <kbd>K</kbd>
+      <span class="sound">When Dex Finds a cute guy</span>
+    </div>
+    <div event-key="l" class="key">
+      <kbd>L</kbd>
+      <span class="sound">For actually being on this site right now</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <footer class="footerTest">Website made by Soren for his goofy pals</footer>
+  </div>
+
+  <audio event-key="a" src="sounds/vine-boom.mp3"></audio>
+  <audio event-key="s" src="sounds/spongebob-fail.mp3"></audio>
+  <audio event-key="d" src="sounds/emotional-damage-meme.mp3"></audio>
+  <audio event-key="f" src="sounds/poopy-almost-slipped-out.mp3"></audio>
+  <audio event-key="g" src="sounds/goofy-ahh-sounds.mp3"></audio>
+  <audio event-key="h" src="sounds/9convert_JMEQrwL.mp3"></audio>
+  <audio event-key="j" src="sounds/yt1s_wU4BGgD.mp3"></audio>
+  <audio event-key="k" src="sounds/penguinz0.mp3"></audio>
+  <audio event-key="l" src="sounds/movie_1.mp3"></audio>
+  <audio onclick="egg" src="sounds/deja-vu.mp3"></audio>
+<script>
+ 
+  function playSound(e) {
+    //console.log(e.keyCode);
+    //Audio segment
+    const audio = document.querySelector(`audio[event-key="${event.key}"]`)
+    console.log(event.key)
+    console.log(audio);
+
+    if(!audio) return; // Stops the function from running all together
+    audio.currentTime = 0; // Rewind to the start
+    audio.play();
+
+    //Key animation segment
+    const key = document.querySelector(`.key[event-key="${event.key}"]`)
+    //console.log(key);
+    key.classList.add('playing');
+    
+  }
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // Skip if its not a 'transform'
+    console.log(e.propertyName);
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  //console.log(keys);
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition)); 
+  window.addEventListener('keydown', playSound);
+
+  footerAudio = new Audio('sounds/deja-vu.mp3');
+  console.log(footerAudio);
+  footer = document.querySelector('.footerTest');
+  console.log(footer);
+  footer.addEventListener('click', () => {
+    footerAudio.play();
+  });
+
+</script>
+
+
+</body>
+</html>
