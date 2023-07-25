@@ -91,13 +91,13 @@
   const keys = document.querySelectorAll('.key');
   //console.log(keys);
   keys.forEach(key => key.addEventListener('transitionend', removeTransition)); 
-  window.addEventListener('click', playSound);
+  window.addEventListener('keydown', playSound);
 
   footerAudio = new Audio('sounds/deja-vu.mp3');
   console.log(footerAudio);
   footer = document.querySelector('.footerTest');
   console.log(footer);
-  footer.addEventListener('click', () => {
+  footer.addEventListener('keydown', () => {
     footerAudio.play();
   });
 
